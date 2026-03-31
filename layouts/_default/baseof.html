@@ -5,6 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ .Title }} | {{ .Site.Title }}</title>
     <style>
+
+        /* 容器布局：左侧 250px，右侧自适应 */
+    .content-wrapper {
+        display: flex;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 80px 5%;
+        gap: 50px;
+    }
+
+    /* 侧边栏基础样式 */
+    .sidebar-nav {
+        width: 200px;
+        flex-shrink: 0;
+    }
+
+    /* 粘性定位：距离顶部 100px 时固定 */
+    .sidebar-sticky {
+        position: sticky;
+        top: 100px;
+    }
+
+    .sidebar-nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .sidebar-nav li {
+        margin-bottom: 15px;
+    }
+
+    .sidebar-nav a {
+        text-decoration: none;
+        color: #86868B;
+        font-size: 0.85rem;
+        font-weight: 500;
+        letter-spacing: 1px;
+        transition: color 0.3s;
+    }
+
+    .sidebar-nav a:hover {
+        color: #89b449; /* 之前的品牌绿 */
+    }
+
+    .main-content {
+        flex-grow: 1;
+    }
+
+    /* 响应式：在手机上隐藏侧边栏或变成横向 */
+    @media (max-width: 768px) {
+        .content-wrapper {
+            flex-direction: column;
+        }
+        .sidebar-nav {
+            display: none; /* 移动端通常隐藏这种侧边栏 */
+        }
+    }
+    
     :root {
         --bg: #F9F9F7;      /* 柔和的浅米色/纸张色，比纯白更有高级感 */
         --text: #1D1D1F;    /* 深色石墨黑，苹果风格的主文字色 */
