@@ -1,0 +1,37 @@
+{{ define "main" }}
+<section class="hero-fullscreen">
+  <nav class="lang-switch-top">
+    {{ range .AllTranslations }}
+      <a href="{{ .Permalink }}">{{ .Language.LanguageName }}</a>
+    {{ end }}
+  </nav>
+
+  <div class="hero-content">
+    <h1 class="brand-name">WOK THIS WAY</h1>
+    
+    <nav class="hero-categories">
+      {{ range .Site.Taxonomies.categories }}
+        <a href="{{ .Page.Permalink }}">#{{ .Page.Title }}</a>
+      {{ end }}
+    </nav>
+  </div>
+
+  <div class="scroll-indicator">SCROLL TO EXPLORE</div>
+</section>
+
+<section class="menu-container">
+  <div class="recipe-grid">
+    {{ range .Site.RegularPages }}
+    <div class="recipe-card">
+      <a href="{{ .Permalink }}">
+        <div class="card-image"><span>[ NO IMAGE ]</span></div>
+        <div class="card-info">
+          <h3>{{ .Title }}</h3>
+          <p>{{ .Params.prep }} / {{ .Params.cook }}</p>
+        </div>
+      </a>
+    </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="{{ .Lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Title }} | {{ .Site.Title }}</title>
+    <style>
+    :root {
+        --bg: #F9F9F7;      /* 柔和的浅米色/纸张色，比纯白更有高级感 */
+        --text: #1D1D1F;    /* 深色石墨黑，苹果风格的主文字色 */
+        --muted: #86868B;   /* 灰色辅助文字 */
+        --border: #E5E5E5;  /* 浅色分割线 */
+        --accent: #000000;  /* 强调色 */
+    }
+
+    body { 
+        background: var(--bg); 
+        color: var(--text); 
+        margin: 0; 
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", sans-serif;
+        -webkit-font-smoothing: antialiased; /* 让字体在 Mac 上更纤细 */
+    }
+
+    /* 右上角切换：现在用深色文字 */
+    .lang-switch-top {
+        position: absolute;
+        top: 30px;
+        right: 40px;
+        z-index: 100;
+    }
+
+    .lang-switch-top a {
+        color: var(--text);
+        text-decoration: none;
+        margin-left: 20px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        opacity: 0.5;
+        transition: opacity 0.3s;
+    }
+
+    .lang-switch-top a:hover { opacity: 1; }
+
+    /* Hero Section：极简留白 */
+    .hero-fullscreen {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    .brand-name {
+        font-size: 6rem;
+        font-weight: 900;
+        letter-spacing: 8px; /* 稍微缩减间距，更现代 */
+        margin: 0;
+        line-height: 1;
+        color: var(--accent);
+    }
+
+    /* 标题下的分类：现在更清晰 */
+    .hero-categories {
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+    }
+
+    .hero-categories a {
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: 400;
+        letter-spacing: 1px;
+        transition: color 0.3s;
+    }
+
+    .hero-categories a:hover {
+        color: var(--accent);
+    }
+
+    /* 底部网格：卡片化设计 */
+    .menu-container {
+        padding: 100px 5%;
+        background: #FFFFFF; /* 网格区域用纯白稍微区分 */
+        border-top: 1px solid var(--border);
+    }
+
+    .recipe-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .recipe-card {
+        text-decoration: none;
+        color: inherit;
+        transition: transform 0.4s ease;
+    }
+
+    .recipe-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .card-image {
+        aspect-ratio: 16/9;
+        background: #F2F2F2; /* 浅灰色占位符 */
+        border-radius: 12px; /* 圆角增加现代感 */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #CCC;
+        overflow: hidden;
+    }
+
+    .card-info h3 {
+        margin: 15px 0 5px 0;
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+
+    .card-info p {
+        color: var(--muted);
+        font-size: 0.9rem;
+        margin: 0;
+    }
+
+    .scroll-indicator {
+        position: absolute;
+        bottom: 40px;
+        color: var(--muted);
+        font-size: 0.75rem;
+        letter-spacing: 2px;
+    }
+</style>
+</head>
+<body>
+    {{ block "main" . }}{{ end }}
+</body>
+</html>

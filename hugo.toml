@@ -1,0 +1,21 @@
+baseURL = 'https://WokThisWay.github.io/'
+title = 'Wok This Way'
+
+[languages]
+  [languages.en]
+    languageName = 'English'
+    contentDir = 'content/en'
+    weight = 1
+    [languages.en.params]
+      description = 'Precision Chinese Cooking'
+
+  [languages.zh]
+    languageName = '中文'
+    contentDir = 'content/zh'
+    weight = 2
+    [languages.zh.params]
+      description = '理工男的精确中餐教学'
+
+[taxonomies]
+  category = 'categories'
+  tag = 'tags'
