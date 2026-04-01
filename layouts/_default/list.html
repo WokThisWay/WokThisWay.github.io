@@ -1,0 +1,27 @@
+{{ define "main" }}
+<section class="recipe-list" style="padding: 50px 0;">
+  <div class="container">
+    <h1>{{ .Title }}</h1>
+    <p>DEBUG: 文件夹下共有 {{ len .Pages }} 个页面</p>
+    <hr>
+
+    <ul class="recipe-grid">
+      {{ range .Pages }}
+      <li style="margin-bottom: 20px; list-style: none;">
+        <article>
+          <h2 style="margin: 0;">
+            <a href="{{ .RelPermalink }}" style="color: #ef4444; text-decoration: none;">
+              {{ .Title | default "未命名菜谱" }}
+            </a>
+          </h2>
+          
+          <p style="color: #666;">{{ .Summary | truncate 100 }}</p>
+          
+          <small>发布日期: {{ .Date.Format "2006-01-02" }}</small>
+        </article>
+      </li>
+      {{ end }}
+    </ul>
+  </div>
+</section>
+{{ end }}

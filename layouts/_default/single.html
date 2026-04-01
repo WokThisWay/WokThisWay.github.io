@@ -1,48 +1,27 @@
 {{ define "main" }}
-<article style="max-width: 800px; margin: 0 auto; padding: 120px 20px 60px;">
-  
-  <nav style="margin-bottom: 20px; font-size: 0.8rem;">
-    <a href="/" style="color: #89b449; text-decoration: none;">HOME</a> 
-    <span style="color: #ccc; margin: 0 10px;">/</span> 
-    <span style="color: #86868B; text-transform: uppercase;">RECIPE</span>
-  </nav>
+<article class="recipe-article" style="padding: 80px 0; max-width: 800px; margin: 0 auto;">
+    <div class="container">
+        <header class="recipe-header" style="text-align: center; margin-bottom: 40px;">
+            <h1 style="font-size: 3rem; color: #333;">{{ .Title }}</h1>
+            <div class="meta" style="color: #999;">
+                <span>发布日期: {{ .Date.Format "2006-01-02" }}</span>
+                {{ with .Params.tags }}
+                <span style="margin-left: 20px;">标签: {{ range . }}#{{ . }} {{ end }}</span>
+                {{ end }}
+            </div>
+        </header>
 
-  <div style="width: 100%; aspect-ratio: 16/9; background: #F2F2F2; border-radius: 16px; margin-bottom: 40px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-    <span style="color: #BBB; font-weight: 600; letter-spacing: 2px;">[ IMAGE COMING SOON ]</span>
-  </div>
-  
-  <h1 style="font-size: 3rem; font-weight: 900; margin-bottom: 10px; color: #1D1D1F;">{{ .Title }}</h1>
-  
-  <div style="display: flex; gap: 40px; color: #1D1D1F; margin-bottom: 40px; border-top: 1px solid #EEE; border-bottom: 1px solid #EEE; padding: 20px 0; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">
-    <div>
-      <strong style="display: block; color: #86868B; font-size: 0.7rem; margin-bottom: 5px;">PREP TIME</strong>
-      {{ .Params.prep | default "5 mins" }}
+        <div class="recipe-content" style="line-height: 1.8; font-size: 1.1rem;">
+            {{ .Content }}
+        </div>
+
+        <hr style="margin: 50px 0;">
+        
+        <div style="text-align: center;">
+            <a href="/recipes/" style="color: #ef4444; text-decoration: none; font-weight: bold;">
+                ← 返回菜谱列表
+            </a>
+        </div>
     </div>
-    <div>
-      <strong style="display: block; color: #86868B; font-size: 0.7rem; margin-bottom: 5px;">COOK TIME</strong>
-      {{ .Params.cook | default "10 mins" }}
-    </div>
-  </div>
-
-  <div class="recipe-content" style="line-height: 1.8; font-size: 1.1rem; color: #333;">
-    {{ .Content }}
-  </div>
-
-  <div style="margin-top: 60px; padding-top: 30px; border-top: 1px dashed #DDD;">
-    <h4 style="font-size: 0.75rem; color: #86868B; margin-bottom: 15px; letter-spacing: 1px;">EXPLORE MORE TAGS:</h4>
-    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-        {{ range .Params.tags }}
-        <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}/" 
-           style="background: #F9F9F7; color: #89b449; text-decoration: none; font-size: 0.85rem; padding: 6px 15px; border-radius: 20px; border: 1px solid #EEE; transition: 0.3s;">
-           #{{ . }}
-        </a>
-        {{ end }}
-    </div>
-  </div>
-
-  <div style="margin-top: 60px; text-align: center;">
-    <a href="/" style="color: #1D1D1F; text-decoration: none; font-weight: 600; font-size: 0.9rem; border-bottom: 2px solid #89b449;">BACK TO ALL RECIPES</a>
-  </div>
-
 </article>
 {{ end }}

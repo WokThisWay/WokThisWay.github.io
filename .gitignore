@@ -1,1 +1,8 @@
-public/
+public
+resources
+*.lock
+
+exampleSite/public
+exampleSite/resources
+node_modules
+hugo-scroll.code-workspace
