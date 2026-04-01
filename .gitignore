@@ -1,8 +1,5 @@
 public
 resources
+_gen
 *.lock
 
-exampleSite/public
-exampleSite/resources
-node_modules
-hugo-scroll.code-workspace
